@@ -16,8 +16,6 @@ public:
       sum++;
     }
     ~Node(){
-        delete prev;
-        delete next;
         sum--;
     }
 };
@@ -64,46 +62,98 @@ public:
         return 1;
     }
     int RemoveHead(){
+        if(head==NULL){
+            return 0;
+        }else if(head->next==NULL){
+            RemoveAll();
+            return 1;
+        }else{
         ptr = head;
         head = head->next;
         ptr->next = NULL;
         head->prev = NULL;
         delete ptr;
-        return 0;
+        return 1;
+        }
     }
     int RemoveTail(){
+        if(tail==NULL){
+            return 0;
+        }else if(tail->prev==NULL){
+            RemoveAll();
+            return 1;
+        }else{
         ptr = tail;
         tail = tail->prev;
         ptr->prev = NULL;
         tail->next = NULL;
         delete ptr;
-        return 0;
+        return 1;
+        }
+    }
+    int AddHead(){
+        ptr = head;
+        ptr->prev = new Node;
+        ptr->prev->next = head;
+        head = ptr->prev;
+        return 1;
+    }
+    int AddTail(){
+        ptr = tail;
+        ptr->next = new Node;
+        ptr->next->prev = tail;
+        tail = ptr->next;
+        return 1;
+    }
+    int RemoveAll(){
+        if(head==NULL){
+            return 0;
+        }
+        while(head != NULL)  
+        {  
+            ptr=head->next;  
+            delete head;  
+            head=ptr;
+        }
+        tail = NULL;
+        ptr = NULL;
+        return 1;
+    }
+    int GetCoutnt(){
+        if (head)
+            return this->head->sum;
+        else
+        {
+            return 0;
+        }
+        
+    }
+    int IsEmpty(){
+        if(head)
+            return 1;
+            
+            else
+                return 0;
     }
 };
 int Node::sum = 0;
 int main(){
     Node *s;
-    int a;
     List ls;
     ls.CList();
     ls.InserBefore();
     ls.InserAfter();
-    s=ls.GetTail();
-    cout << s->name << endl;
+    ls.AddHead();
+    ls.AddTail();
     s=ls.GetHead();
     cout << s->name << endl;
-    a = ls.head->sum;
-    cout << a << endl;
-    ls.RemoveHead();
-    s=ls.GetHead();
-    cout << s->name << endl;
-    a = ls.head->sum;
-    cout << a << endl;
-    ls.RemoveTail();
     s=ls.GetTail();
     cout << s->name << endl;
-    a = ls.head->sum;
-    cout << a << endl;
+    cout << ls.GetCoutnt() << endl;
+    cout << ls.IsEmpty() << endl;
+    ls.RemoveAll();
+    cout << ls.GetCoutnt() << endl;
+    cout << ls.IsEmpty() << endl;
     _sleep(10000);
     return 1;
 }
