@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-class Node{
-    public:
+class Node
+{
+  public:
     static int sum;
     string name;
     Node *prev;
@@ -9,8 +10,9 @@ class Node{
     Node();
     ~Node();
 };
-class List{
-    public:
+class List
+{
+  public:
     Node *head;
     Node *tail;
     Node *ptr;
