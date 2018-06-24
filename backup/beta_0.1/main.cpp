@@ -36,8 +36,8 @@ void find(List &ls)
 int main()
 {
     int cho;
-    //int ss;
-    //char yn = 'y';
+    int ss;
+    char yn = 'y';
     List ls;
     string str;
     while (1)
