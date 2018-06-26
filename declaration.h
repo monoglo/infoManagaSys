@@ -16,6 +16,7 @@ public:
   Node *head;
   Node *tail;
   Node *ptr;
+  List();
   int CList();
   Node *GetHead();
   Node *GetTail();
@@ -33,6 +34,7 @@ public:
   string GetAt(int n);
   int SetAt(int n);
   int RemoveAt(int n);
+  int RemoveNode();
   Node *Find(string st);
   Node *FindIndex(int n);
 };

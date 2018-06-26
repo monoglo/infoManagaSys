@@ -12,6 +12,11 @@ Node::~Node()
 {
     sum--;
 }
+List::List(){
+    head = NULL;
+    tail = NULL;
+    ptr = NULL;
+}
 int List::CList()
 {
     cout << "Now build the head,";
@@ -152,9 +157,8 @@ int List::GetCoutnt()
 }
 int List::IsEmpty()
 {
-    if (head)
+    if (head==NULL)
         return 1;
-
     else
         return 0;
 }
@@ -200,6 +204,18 @@ int List::SetAt(int n)
     }
     cout << "Pleae input set name:" << endl;
     cin >> ptr->name;
+    return 1;
+}
+int List::RemoveNode(){
+    if (ptr == head)
+        RemoveHead();
+    else if (ptr == tail)
+        RemoveTail();
+    else
+    {
+        ptr->prev->next = ptr->next;
+        ptr->next->prev = ptr->prev;
+    }
     return 1;
 }
 int List::RemoveAt(int n)
