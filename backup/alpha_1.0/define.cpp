@@ -1,4 +1,4 @@
-#include "include/declaration.h"
+#include "declaration.h"
 int Node::sum = 0;
 Node::Node()
 {
