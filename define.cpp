@@ -8,6 +8,13 @@ Node::Node()
     next = NULL;
     sum++;
 }
+Node::Node(string n)
+{
+    name = n;
+    prev = NULL;
+    next = NULL;
+    sum++;
+}
 Node::~Node()
 {
     sum--;
@@ -122,10 +129,26 @@ int List::AddHead()
     head = ptr->prev;
     return 1;
 }
+int List::AddHead(string n)
+{
+    ptr = head;
+    ptr->prev = new Node(n);
+    ptr->prev->next = head;
+    head = ptr->prev;
+    return 1;
+}
 int List::AddTail()
 {
     ptr = tail;
     ptr->next = new Node;
+    ptr->next->prev = tail;
+    tail = ptr->next;
+    return 1;
+}
+int List::AddTail(string n)
+{
+    ptr = tail;
+    ptr->next = new Node(n);
     ptr->next->prev = tail;
     tail = ptr->next;
     return 1;
@@ -218,6 +241,19 @@ int List::RemoveNode(){
     }
     return 1;
 }
+int List::RemoveNode(Node *n){
+    if (n == head)
+        RemoveHead();
+    else if (n == tail)
+        RemoveTail();
+    else
+    {
+        n->prev->next = n->next;
+        n->next->prev = n->prev;
+        delete n;
+    }
+    return 1;
+}
 int List::RemoveAt(int n)
 {
     int i;
@@ -235,7 +271,6 @@ int List::RemoveAt(int n)
         ptr->prev->next = ptr->next;
         ptr->next->prev = ptr->prev;
     }
-    delete ptr;
     return 1;
 }
 Node *List::Find(string st)

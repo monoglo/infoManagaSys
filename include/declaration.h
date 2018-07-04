@@ -1,3 +1,5 @@
+#ifndef _HEADERNAME_H
+#define _HEADERNAME_H
 #include <iostream>
 using namespace std;
 class Node
@@ -8,6 +10,7 @@ public:
   Node *prev;
   Node *next;
   Node();
+  Node(string n);
   ~Node();
 };
 class List
@@ -25,7 +28,9 @@ public:
   int RemoveHead();
   int RemoveTail();
   int AddHead();
+  int AddHead(string n);
   int AddTail();
+  int AddTail(string n);
   int RemoveAll();
   int GetCoutnt();
   int IsEmpty();
@@ -35,6 +40,8 @@ public:
   int SetAt(int n);
   int RemoveAt(int n);
   int RemoveNode();
+  int RemoveNode(Node *n);
   Node *Find(string st);
   Node *FindIndex(int n);
 };
+#endif 
