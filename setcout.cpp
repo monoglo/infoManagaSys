@@ -24,7 +24,6 @@ void listall(List &ls)
 }
 int main()
 {
-    int i;
     Set s1, s2, s3;
     s1.CList();
     s1.AddTail();
@@ -36,7 +35,5 @@ int main()
     s2.AddTail();
     s1 - s2;
     listall(s1);
-    cout << "Finished!" << endl;
-    cin >> i;
     return 0;
 }
