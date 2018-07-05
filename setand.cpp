@@ -38,6 +38,7 @@ int main()
     s1 and s2;
     listallll(s1);
     cout << "Finished!" << endl;
+    cout << "test" << endl;
     cin >> i;
     return 0;
 }
